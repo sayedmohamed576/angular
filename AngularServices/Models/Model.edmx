@@ -1,0 +1,2106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="accounts">
+          <Key>
+            <PropertyRef Name="PMS_ID" />
+          </Key>
+          <Property Name="PMS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PMS_code" Type="int" />
+          <Property Name="plan_id" Type="int" />
+          <Property Name="isactive" Type="bit" />
+          <Property Name="paid" Type="nvarchar(max)" />
+          <Property Name="Duration" Type="nvarchar(max)" />
+          <Property Name="no_of_users" Type="int" />
+          <Property Name="PMS_Name" Type="nvarchar(max)" />
+          <Property Name="owner_name" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="City_id" Type="int" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="address" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="accounts_payments">
+          <Key>
+            <PropertyRef Name="accounts_payments_id" />
+          </Key>
+          <Property Name="accounts_payments_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="PayType_ID" Type="int" />
+          <Property Name="payTime" Type="datetime" />
+          <Property Name="visa_chq_no" Type="nvarchar(max)" />
+          <Property Name="due_date" Type="datetime" />
+          <Property Name="amount" Type="int" />
+        </EntityType>
+        <EntityType Name="amenities">
+          <Key>
+            <PropertyRef Name="Amenity_ID" />
+          </Key>
+          <Property Name="Amenity_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="isselected" Type="bit" />
+        </EntityType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="Booking_ID" />
+          </Key>
+          <Property Name="Booking_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Property_ID" Type="int" />
+          <Property Name="Status_ID" Type="int" />
+          <Property Name="Planned_Arrival_Date" Type="datetime" />
+          <Property Name="Planned_Departure_Date" Type="datetime" />
+          <Property Name="Booking_Date" Type="datetime" />
+          <Property Name="Night_price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="Booking_source" Type="int" />
+          <Property Name="No_of_nights" Type="int" />
+          <Property Name="Client_ID" Type="int" />
+          <Property Name="Property_Type_ID" Type="int" />
+          <Property Name="Actual_arrival_Date" Type="datetime" />
+          <Property Name="Actual_Departure_Date" Type="datetime" />
+          <Property Name="Is_Cancelled" Type="bit" Nullable="false" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="Pay_Source_Type" Type="nvarchar(max)" />
+          <Property Name="IS_confirmed" Type="bit" Nullable="false" />
+          <Property Name="confirmed_Date" Type="datetime" />
+          <Property Name="Property_Name" Type="nvarchar(max)" />
+          <Property Name="Property_type_name" Type="nvarchar(max)" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="contact_id" Type="int" />
+          <Property Name="child_no" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="person_no" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="change_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Booking_has_Property">
+          <Key>
+            <PropertyRef Name="BP_ID" />
+          </Key>
+          <Property Name="BP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Booking_ID" Type="int" Nullable="false" />
+          <Property Name="Property_ID" Type="int" />
+          <Property Name="Status_ID" Type="int" />
+          <Property Name="Planned_Arrival_Date" Type="datetime" />
+          <Property Name="Planned_Departure_Date" Type="datetime" />
+          <Property Name="Booking_Date" Type="datetime" />
+          <Property Name="Night_price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="Booking_source" Type="nvarchar(max)" />
+          <Property Name="No_of_nights" Type="int" />
+          <Property Name="Client_ID" Type="int" />
+          <Property Name="Property_Type_ID" Type="int" />
+          <Property Name="Actual_arrival_Date" Type="datetime" />
+          <Property Name="Actual_Departure_Date" Type="datetime" />
+          <Property Name="Is_Cancelled" Type="bit" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="Pay_Source_Type" Type="nvarchar(max)" />
+          <Property Name="IS_confirmed" Type="bit" />
+          <Property Name="confirmed_Date" Type="datetime" />
+          <Property Name="Property_Name" Type="nvarchar(max)" />
+          <Property Name="Property_type_name" Type="nvarchar(max)" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="contact_id" Type="int" />
+          <Property Name="child_no" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="person_no" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="change_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="booking_source">
+          <Key>
+            <PropertyRef Name="Booking_Source_IDBooking_Source_ID" />
+          </Key>
+          <Property Name="Booking_Source_IDBooking_Source_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Booking_Source_Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="charges">
+          <Key>
+            <PropertyRef Name="charge_id" />
+          </Key>
+          <Property Name="charge_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="is_selected" Type="bit" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="City_id" />
+          </Key>
+          <Property Name="City_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City_name" Type="nvarchar(max)" />
+          <Property Name="Country_id" Type="int" />
+        </EntityType>
+        <EntityType Name="clients">
+          <Key>
+            <PropertyRef Name="client_ID" />
+          </Key>
+          <Property Name="client_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Commission_discount" Type="nvarchar(max)" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="Clients_type_id" Type="int" />
+          <Property Name="code" Type="char" MaxLength="30" />
+          <Property Name="Country_ID" Type="int" />
+          <Property Name="City_ID" Type="int" />
+          <Property Name="contact_person_name" Type="nvarchar(max)" />
+          <Property Name="person_email" Type="nvarchar(max)" />
+          <Property Name="person_phone" Type="nvarchar(max)" />
+          <Property Name="person_mob" Type="nvarchar(max)" />
+          <Property Name="logo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="clients_type">
+          <Key>
+            <PropertyRef Name="Clients_type_id" />
+          </Key>
+          <Property Name="Clients_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clients_type_name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="contract_dtl">
+          <Key>
+            <PropertyRef Name="condition_id" />
+          </Key>
+          <Property Name="condition_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contract_id" Type="int" />
+          <Property Name="condition_name" Type="nvarchar(max)" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="PMS_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="contracts_hdr">
+          <Key>
+            <PropertyRef Name="Contract_ID" />
+          </Key>
+          <Property Name="Contract_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="isactive" Type="bit" Nullable="false" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="user_id" Type="int" />
+        </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="Country_ID" />
+          </Key>
+          <Property Name="Country_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country_name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="currencies">
+          <Key>
+            <PropertyRef Name="Currency_ID" />
+          </Key>
+          <Property Name="Currency_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="mark" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="guests">
+          <Key>
+            <PropertyRef Name="Guest_ID" />
+          </Key>
+          <Property Name="Guest_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guest_Name" Type="nvarchar(max)" />
+          <Property Name="Guest_email" Type="nvarchar(max)" />
+          <Property Name="Nationality_ID" Type="int" />
+          <Property Name="Identity_ID" Type="int" />
+          <Property Name="Is_Black_listed" Type="bit" Nullable="false" />
+          <Property Name="Is_Vip" Type="bit" Nullable="false" />
+          <Property Name="identity_type" Type="nvarchar(max)" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="Birth_Date" Type="date" />
+          <Property Name="gendre" Type="nvarchar(max)" />
+          <Property Name="nickname" Type="nvarchar(max)" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="Booking_id" Type="int" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Country_ID" Type="int" />
+          <Property Name="City_ID" Type="int" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Mobil" Type="nvarchar(max)" />
+          <Property Name="Company_Name" Type="nvarchar(max)" />
+          <Property Name="Company_address" Type="nvarchar(max)" />
+          <Property Name="Company_country" Type="int" />
+          <Property Name="Company_city" Type="int" />
+          <Property Name="Company_Mobil" Type="nvarchar(max)" />
+          <Property Name="Company_phone" Type="nvarchar(max)" />
+          <Property Name="guest_type" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="housekeeping_trans">
+          <Key>
+            <PropertyRef Name="Trans_ID" />
+          </Key>
+          <Property Name="Trans_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Property_ID" Type="int" />
+          <Property Name="Task" Type="nvarchar(max)" />
+          <Property Name="Assign_to" Type="nvarchar(max)" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="Property_Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="identity_types">
+          <Key>
+            <PropertyRef Name="identity_ID" />
+          </Key>
+          <Property Name="identity_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Parent_identity_id" Type="int" />
+          <Property Name="identity_name" Type="nvarchar(max)" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="user_id" Type="int" />
+        </EntityType>
+        <EntityType Name="images">
+          <Key>
+            <PropertyRef Name="image_id" />
+          </Key>
+          <Property Name="image_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PropertyType_ID" Type="int" />
+          <Property Name="Property_ID" Type="int" />
+          <Property Name="image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="invoice_dtl">
+          <Key>
+            <PropertyRef Name="invoice_no" />
+          </Key>
+          <Property Name="invoice_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Invoice_dtl_id" Type="int" Nullable="false" />
+          <Property Name="charge_id" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="discount_percent" Type="int" Nullable="false" />
+          <Property Name="discount_value" Type="int" Nullable="false" />
+          <Property Name="Charge_Date" Type="datetime" Nullable="false" />
+          <Property Name="Booking_ID" Type="int" Nullable="false" />
+          <Property Name="Property_ID" Type="int" Nullable="false" />
+          <Property Name="Guest_ID" Type="int" Nullable="false" />
+          <Property Name="Agent_ID" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="PMS_ID" Type="int" Nullable="false" />
+          <Property Name="PMS_Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="logs">
+          <Key>
+            <PropertyRef Name="log_id" />
+          </Key>
+          <Property Name="log_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="real_date" Type="datetime" />
+          <Property Name="action_cat" Type="nvarchar(max)" />
+          <Property Name="action" Type="nvarchar(max)" />
+          <Property Name="item_id" Type="int" />
+          <Property Name="item_name" Type="nvarchar(max)" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="PMS_Name" Type="nvarchar(max)" />
+          <Property Name="Bookibng_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Messege">
+          <Key>
+            <PropertyRef Name="messege_id" />
+          </Key>
+          <Property Name="messege_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="messege_title" Type="nvarchar(max)" />
+          <Property Name="messege_body" Type="nvarchar(max)" />
+          <Property Name="messege_date" Type="date" />
+          <Property Name="flag_read" Type="bit" />
+        </EntityType>
+        <EntityType Name="nationalities">
+          <Key>
+            <PropertyRef Name="Nationality_ID" />
+          </Key>
+          <Property Name="Nationality_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="PMS_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="offers">
+          <Key>
+            <PropertyRef Name="Offer_id" />
+          </Key>
+          <Property Name="Offer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="From_Date" Type="datetime" />
+          <Property Name="To_Date" Type="datetime" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="offer_name" Type="nvarchar(max)" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Offers_dtl">
+          <Key>
+            <PropertyRef Name="trans_ID" />
+          </Key>
+          <Property Name="trans_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="original_price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="offer_price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="Property_type_id" Type="int" />
+          <Property Name="Property_type_name" Type="nvarchar(max)" />
+          <Property Name="adults_no" Type="int" />
+          <Property Name="child_no" Type="int" />
+          <Property Name="offer_name" Type="nvarchar(max)" />
+          <Property Name="offer_id" Type="int" />
+          <Property Name="From_Date" Type="datetime" />
+          <Property Name="To_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="package_charges">
+          <Key>
+            <PropertyRef Name="trans_id" />
+          </Key>
+          <Property Name="trans_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Charge_ID" Type="int" Nullable="false" />
+          <Property Name="Charge_Price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="offer_id" Type="int" />
+          <Property Name="offer_name" Type="nvarchar(max)" />
+          <Property Name="is_selected" Type="bit" />
+        </EntityType>
+        <EntityType Name="package_dtl">
+          <Key>
+            <PropertyRef Name="trans_ID" />
+          </Key>
+          <Property Name="trans_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="original_price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="Package_price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="Property_type_id" Type="int" />
+          <Property Name="Property_type_name" Type="nvarchar(max)" />
+          <Property Name="adults_no" Type="int" />
+          <Property Name="child_no" Type="int" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="No_of_Days" Type="int" />
+          <Property Name="id_pack" Type="int" />
+        </EntityType>
+        <EntityType Name="package_hdr">
+          <Key>
+            <PropertyRef Name="Package_Id" />
+          </Key>
+          <Property Name="Package_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="No_of_Days" Type="int" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="PMS_ID" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="payment_types">
+          <Key>
+            <PropertyRef Name="PayType_ID" />
+          </Key>
+          <Property Name="PayType_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="Is_active" Type="bit" Nullable="false" />
+          <Property Name="PMS_ID" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="payments">
+          <Key>
+            <PropertyRef Name="Payment_ID" />
+          </Key>
+          <Property Name="Payment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PayType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="payTime" Type="datetime" />
+          <Property Name="client_type" Type="nvarchar(max)" />
+          <Property Name="Guest_ID" Type="int" Nullable="false" />
+          <Property Name="visa_chq_no" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="due_date" Type="datetime" />
+          <Property Name="PMS_ID" Type="int" Nullable="false" />
+          <Property Name="Booking_ID" Type="int" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="Property_ID" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="receipt_type" Type="nvarchar(max)" />
+          <Property Name="payment_type" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="permissions">
+          <Key>
+            <PropertyRef Name="permission_id" />
+          </Key>
+          <Property Name="permission_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="PMS_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="plans">
+          <Key>
+            <PropertyRef Name="Plan_ID" />
+          </Key>
+          <Property Name="Plan_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="Duration" Type="nvarchar(max)" />
+          <Property Name="cost_per_Property" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="no_of_users" Type="int" Nullable="false" />
+          <Property Name="PMS_ID" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="properties">
+          <Key>
+            <PropertyRef Name="Property_ID" />
+          </Key>
+          <Property Name="Property_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Property_type_id" Type="int" Nullable="false" />
+          <Property Name="Property_Name" Type="nvarchar(max)" />
+          <Property Name="price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="house_keeping_status" Type="nvarchar(max)" />
+          <Property Name="fixed_status" Type="nvarchar(max)" />
+          <Property Name="Status_ID" Type="int" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="floor" Type="int" />
+        </EntityType>
+        <EntityType Name="property_has_aminities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PropertyType_ID" Type="int" />
+          <Property Name="Amenity_ID" Type="int" />
+          <Property Name="Property_type_name" Type="nvarchar(max)" />
+          <Property Name="price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="is_selected" Type="bit" />
+        </EntityType>
+        <EntityType Name="property_types">
+          <Key>
+            <PropertyRef Name="PropertyType_ID" />
+          </Key>
+          <Property Name="PropertyType_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Property_type_name" Type="nvarchar(max)" />
+          <Property Name="child_no" Type="int" Nullable="false" />
+          <Property Name="adults_no" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="no_of_properties" Type="int" Nullable="false" />
+          <Property Name="PMS_ID" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="start_number" Type="int" Nullable="false" />
+          <Property Name="Name_char" Type="nvarchar(max)" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="type_view" Type="bit" Nullable="false" />
+          <Property Name="property_type_icon" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="regions">
+          <Key>
+            <PropertyRef Name="Region_ID" />
+          </Key>
+          <Property Name="Region_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="Parent_Region_id" Type="int" />
+          <Property Name="PMS_ID" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reply">
+          <Key>
+            <PropertyRef Name="reply_id" />
+          </Key>
+          <Property Name="reply_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="messege_id" Type="int" />
+          <Property Name="reply_text" Type="nvarchar(max)" />
+          <Property Name="user_id" Type="int" />
+        </EntityType>
+        <EntityType Name="role_permissions">
+          <Key>
+            <PropertyRef Name="permission_id" />
+          </Key>
+          <Property Name="permission_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="role_id" Type="int" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="seasons">
+          <Key>
+            <PropertyRef Name="seasons_id" />
+          </Key>
+          <Property Name="seasons_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="season_name" Type="nvarchar(max)" />
+          <Property Name="From_Date" Type="datetime" />
+          <Property Name="To_Date" Type="datetime" />
+          <Property Name="PMS_ID" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="seasons_rates">
+          <Key>
+            <PropertyRef Name="trans_id" />
+          </Key>
+          <Property Name="trans_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Property_type_id" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="PMS_ID" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="id_season" Type="int" />
+          <Property Name="Property_type_name" Type="nvarchar(max)" />
+          <Property Name="original_price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="adults_no" Type="int" />
+          <Property Name="child_no" Type="int" />
+          <Property Name="season_name" Type="nvarchar(max)" />
+          <Property Name="From_Date" Type="datetime" />
+          <Property Name="To_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="status_color">
+          <Key>
+            <PropertyRef Name="status_id" />
+          </Key>
+          <Property Name="status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status_name" Type="nvarchar(max)" />
+          <Property Name="status_color" Type="nvarchar(max)" />
+          <Property Name="status_type_id" Type="int" />
+          <Property Name="status_name_en" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="status_types">
+          <Key>
+            <PropertyRef Name="status_type_id" />
+          </Key>
+          <Property Name="status_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status_type_name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="system_options">
+          <Key>
+            <PropertyRef Name="PMS_ID" />
+          </Key>
+          <Property Name="PMS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Default_lang" Type="nvarchar(max)" />
+          <Property Name="Default_currency" Type="int" />
+          <Property Name="no_of_decimals" Type="int" Nullable="false" />
+          <Property Name="check_in_time" Type="nvarchar(max)" />
+          <Property Name="check_out_time" Type="nvarchar(max)" />
+          <Property Name="child_max_age" Type="int" />
+          <Property Name="infant_max_age" Type="int" />
+          <Property Name="Default_travel_agent_commission" Type="nvarchar(max)" />
+          <Property Name="Default_company_Discount" Type="nvarchar(max)" />
+          <Property Name="room_after_check_out" Type="nvarchar(max)" />
+          <Property Name="room_after_change_room" Type="nvarchar(max)" />
+          <Property Name="cancel_booking_min_fee" Type="nvarchar(max)" />
+          <Property Name="cancel_booking_percent_fee" Type="nvarchar(max)" />
+          <Property Name="cancel_booking_dayes" Type="int" />
+          <Property Name="is_credit_card_needed" Type="bit" Nullable="false" />
+          <Property Name="si_deposit_needed" Type="decimal" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="early_checked_in_hours" Type="int" />
+          <Property Name="early_check_in_fixed_fee" Type="int" />
+          <Property Name="early_check_in_booking_percent" Type="int" />
+          <Property Name="early_check_in_night_percent" Type="int" />
+          <Property Name="early_check_out_dayes" Type="int" />
+          <Property Name="early_check_out_fixed_fee" Type="int" />
+          <Property Name="early_check_out_booking_percent" Type="int" />
+          <Property Name="early_check_out_night_percent" Type="int" />
+          <Property Name="late_check_out_hours" Type="int" />
+          <Property Name="late_check_out_fixed_fee" Type="int" />
+          <Property Name="late_check_out_booking_percent" Type="int" />
+          <Property Name="late_check_out_night_percent" Type="int" />
+          <Property Name="PMS_logo" Type="nvarchar(max)" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="PMS_Name" Type="nvarchar(max)" />
+          <Property Name="Country_ID" Type="int" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="phone" Type="nvarchar(max)" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="City_ID" Type="int" />
+          <Property Name="mob" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Temp_charges">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="charge_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="price" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="is_selected" Type="bit" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="username" Type="nvarchar(max)" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="role_id" Type="int" />
+          <Property Name="PMS_ID" Type="int" />
+          <Property Name="gendre" Type="nvarchar(max)" />
+          <Property Name="birth_date" Type="datetime" />
+          <Property Name="Nationality_ID" Type="int" />
+          <Property Name="Identity_ID" Type="int" />
+          <Property Name="identity_type" Type="nvarchar(max)" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="Country_ID" Type="int" />
+          <Property Name="City_ID" Type="int" />
+          <Property Name="phone" Type="nvarchar(max)" />
+          <Property Name="mob" Type="nvarchar(max)" />
+          <Property Name="start_job_date" Type="datetime" />
+          <Property Name="confirm_password" Type="nvarchar(max)" />
+          <Property Name="image" Type="nvarchar(max)" />
+          <Property Name="vcode" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="PMSModelStoreContainer">
+          <EntitySet Name="accounts" EntityType="Self.accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="accounts_payments" EntityType="Self.accounts_payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="amenities" EntityType="Self.amenities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Booking_has_Property" EntityType="Self.Booking_has_Property" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="booking_source" EntityType="Self.booking_source" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="charges" EntityType="Self.charges" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="city" EntityType="Self.city" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clients" EntityType="Self.clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clients_type" EntityType="Self.clients_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contract_dtl" EntityType="Self.contract_dtl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contracts_hdr" EntityType="Self.contracts_hdr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="country" EntityType="Self.country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="currencies" EntityType="Self.currencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="guests" EntityType="Self.guests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="housekeeping_trans" EntityType="Self.housekeeping_trans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="identity_types" EntityType="Self.identity_types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="images" EntityType="Self.images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="invoice_dtl" EntityType="Self.invoice_dtl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="logs" EntityType="Self.logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messege" EntityType="Self.Messege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nationalities" EntityType="Self.nationalities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="offers" EntityType="Self.offers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offers_dtl" EntityType="Self.Offers_dtl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="package_charges" EntityType="Self.package_charges" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="package_dtl" EntityType="Self.package_dtl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="package_hdr" EntityType="Self.package_hdr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payment_types" EntityType="Self.payment_types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payments" EntityType="Self.payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="permissions" EntityType="Self.permissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="plans" EntityType="Self.plans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="properties" EntityType="Self.properties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="property_has_aminities" EntityType="Self.property_has_aminities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="property_types" EntityType="Self.property_types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="regions" EntityType="Self.regions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reply" EntityType="Self.reply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role_permissions" EntityType="Self.role_permissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seasons" EntityType="Self.seasons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seasons_rates" EntityType="Self.seasons_rates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status_color" EntityType="Self.status_color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status_types" EntityType="Self.status_types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="system_options" EntityType="Self.system_options" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Temp_charges" EntityType="Self.Temp_charges" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="PMS_ID" />
+          </Key>
+          <Property Name="PMS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PMS_code" Type="Int32" />
+          <Property Name="plan_id" Type="Int32" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="paid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Duration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="no_of_users" Type="Int32" />
+          <Property Name="PMS_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="owner_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City_id" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="accounts_payments">
+          <Key>
+            <PropertyRef Name="accounts_payments_id" />
+          </Key>
+          <Property Name="accounts_payments_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="PayType_ID" Type="Int32" />
+          <Property Name="payTime" Type="DateTime" Precision="3" />
+          <Property Name="visa_chq_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="due_date" Type="DateTime" Precision="3" />
+          <Property Name="amount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="amenity">
+          <Key>
+            <PropertyRef Name="Amenity_ID" />
+          </Key>
+          <Property Name="Amenity_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="isselected" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="Booking_ID" />
+          </Key>
+          <Property Name="Booking_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Property_ID" Type="Int32" />
+          <Property Name="Status_ID" Type="Int32" />
+          <Property Name="Planned_Arrival_Date" Type="DateTime" Precision="3" />
+          <Property Name="Planned_Departure_Date" Type="DateTime" Precision="3" />
+          <Property Name="Booking_Date" Type="DateTime" Precision="3" />
+          <Property Name="Night_price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="Booking_source" Type="Int32" />
+          <Property Name="No_of_nights" Type="Int32" />
+          <Property Name="Client_ID" Type="Int32" />
+          <Property Name="Property_Type_ID" Type="Int32" />
+          <Property Name="Actual_arrival_Date" Type="DateTime" Precision="3" />
+          <Property Name="Actual_Departure_Date" Type="DateTime" Precision="3" />
+          <Property Name="Is_Cancelled" Type="Boolean" Nullable="false" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="Pay_Source_Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IS_confirmed" Type="Boolean" Nullable="false" />
+          <Property Name="confirmed_Date" Type="DateTime" Precision="3" />
+          <Property Name="Property_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Property_type_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="contact_id" Type="Int32" />
+          <Property Name="child_no" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="person_no" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="change_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Booking_has_Property">
+          <Key>
+            <PropertyRef Name="BP_ID" />
+          </Key>
+          <Property Name="BP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Booking_ID" Type="Int32" Nullable="false" />
+          <Property Name="Property_ID" Type="Int32" />
+          <Property Name="Status_ID" Type="Int32" />
+          <Property Name="Planned_Arrival_Date" Type="DateTime" Precision="3" />
+          <Property Name="Planned_Departure_Date" Type="DateTime" Precision="3" />
+          <Property Name="Booking_Date" Type="DateTime" Precision="3" />
+          <Property Name="Night_price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="Booking_source" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="No_of_nights" Type="Int32" />
+          <Property Name="Client_ID" Type="Int32" />
+          <Property Name="Property_Type_ID" Type="Int32" />
+          <Property Name="Actual_arrival_Date" Type="DateTime" Precision="3" />
+          <Property Name="Actual_Departure_Date" Type="DateTime" Precision="3" />
+          <Property Name="Is_Cancelled" Type="Boolean" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="Pay_Source_Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IS_confirmed" Type="Boolean" />
+          <Property Name="confirmed_Date" Type="DateTime" Precision="3" />
+          <Property Name="Property_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Property_type_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="contact_id" Type="Int32" />
+          <Property Name="child_no" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="person_no" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="change_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="booking_source">
+          <Key>
+            <PropertyRef Name="Booking_Source_IDBooking_Source_ID" />
+          </Key>
+          <Property Name="Booking_Source_IDBooking_Source_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Booking_Source_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="charge">
+          <Key>
+            <PropertyRef Name="charge_id" />
+          </Key>
+          <Property Name="charge_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="is_selected" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="City_id" />
+          </Key>
+          <Property Name="City_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="client_ID" />
+          </Key>
+          <Property Name="client_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Commission_discount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="Clients_type_id" Type="Int32" />
+          <Property Name="code" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="Country_ID" Type="Int32" />
+          <Property Name="City_ID" Type="Int32" />
+          <Property Name="contact_person_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="person_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="person_phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="person_mob" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="clients_type">
+          <Key>
+            <PropertyRef Name="Clients_type_id" />
+          </Key>
+          <Property Name="Clients_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clients_type_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="contract_dtl">
+          <Key>
+            <PropertyRef Name="condition_id" />
+          </Key>
+          <Property Name="condition_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contract_id" Type="Int32" />
+          <Property Name="condition_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="PMS_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="contracts_hdr">
+          <Key>
+            <PropertyRef Name="Contract_ID" />
+          </Key>
+          <Property Name="Contract_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isactive" Type="Boolean" Nullable="false" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="Country_ID" />
+          </Key>
+          <Property Name="Country_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="currency">
+          <Key>
+            <PropertyRef Name="Currency_ID" />
+          </Key>
+          <Property Name="Currency_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="mark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="guest">
+          <Key>
+            <PropertyRef Name="Guest_ID" />
+          </Key>
+          <Property Name="Guest_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guest_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Guest_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality_ID" Type="Int32" />
+          <Property Name="Identity_ID" Type="Int32" />
+          <Property Name="Is_Black_listed" Type="Boolean" Nullable="false" />
+          <Property Name="Is_Vip" Type="Boolean" Nullable="false" />
+          <Property Name="identity_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="Birth_Date" Type="DateTime" Precision="0" />
+          <Property Name="gendre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nickname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="Booking_id" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country_ID" Type="Int32" />
+          <Property Name="City_ID" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobil" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Company_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Company_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Company_country" Type="Int32" />
+          <Property Name="Company_city" Type="Int32" />
+          <Property Name="Company_Mobil" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Company_phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="guest_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="housekeeping_trans">
+          <Key>
+            <PropertyRef Name="Trans_ID" />
+          </Key>
+          <Property Name="Trans_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Property_ID" Type="Int32" />
+          <Property Name="Task" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Assign_to" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="Property_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="identity_types">
+          <Key>
+            <PropertyRef Name="identity_ID" />
+          </Key>
+          <Property Name="identity_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Parent_identity_id" Type="Int32" />
+          <Property Name="identity_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="image">
+          <Key>
+            <PropertyRef Name="image_id" />
+          </Key>
+          <Property Name="image_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PropertyType_ID" Type="Int32" />
+          <Property Name="Property_ID" Type="Int32" />
+          <Property Name="image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="invoice_dtl">
+          <Key>
+            <PropertyRef Name="invoice_no" />
+          </Key>
+          <Property Name="invoice_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Invoice_dtl_id" Type="Int32" Nullable="false" />
+          <Property Name="charge_id" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="discount_percent" Type="Int32" Nullable="false" />
+          <Property Name="discount_value" Type="Int32" Nullable="false" />
+          <Property Name="Charge_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Booking_ID" Type="Int32" Nullable="false" />
+          <Property Name="Property_ID" Type="Int32" Nullable="false" />
+          <Property Name="Guest_ID" Type="Int32" Nullable="false" />
+          <Property Name="Agent_ID" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="PMS_ID" Type="Int32" Nullable="false" />
+          <Property Name="PMS_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="log_id" />
+          </Key>
+          <Property Name="log_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="real_date" Type="DateTime" Precision="3" />
+          <Property Name="action_cat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="item_id" Type="Int32" />
+          <Property Name="item_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="PMS_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Bookibng_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Messege">
+          <Key>
+            <PropertyRef Name="messege_id" />
+          </Key>
+          <Property Name="messege_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="messege_title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="messege_body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="messege_date" Type="DateTime" Precision="0" />
+          <Property Name="flag_read" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="nationality">
+          <Key>
+            <PropertyRef Name="Nationality_ID" />
+          </Key>
+          <Property Name="Nationality_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="PMS_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="offer">
+          <Key>
+            <PropertyRef Name="Offer_id" />
+          </Key>
+          <Property Name="Offer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="From_Date" Type="DateTime" Precision="3" />
+          <Property Name="To_Date" Type="DateTime" Precision="3" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="offer_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Offers_dtl">
+          <Key>
+            <PropertyRef Name="trans_ID" />
+          </Key>
+          <Property Name="trans_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="original_price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="offer_price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="Property_type_id" Type="Int32" />
+          <Property Name="Property_type_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="adults_no" Type="Int32" />
+          <Property Name="child_no" Type="Int32" />
+          <Property Name="offer_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="offer_id" Type="Int32" />
+          <Property Name="From_Date" Type="DateTime" Precision="3" />
+          <Property Name="To_Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="package_charges">
+          <Key>
+            <PropertyRef Name="trans_id" />
+          </Key>
+          <Property Name="trans_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Charge_ID" Type="Int32" Nullable="false" />
+          <Property Name="Charge_Price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="offer_id" Type="Int32" />
+          <Property Name="offer_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="is_selected" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="package_dtl">
+          <Key>
+            <PropertyRef Name="trans_ID" />
+          </Key>
+          <Property Name="trans_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="original_price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="Package_price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="Property_type_id" Type="Int32" />
+          <Property Name="Property_type_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="adults_no" Type="Int32" />
+          <Property Name="child_no" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="No_of_Days" Type="Int32" />
+          <Property Name="id_pack" Type="Int32" />
+        </EntityType>
+        <EntityType Name="package_hdr">
+          <Key>
+            <PropertyRef Name="Package_Id" />
+          </Key>
+          <Property Name="Package_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="No_of_Days" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PMS_ID" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="payment_types">
+          <Key>
+            <PropertyRef Name="PayType_ID" />
+          </Key>
+          <Property Name="PayType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Is_active" Type="Boolean" Nullable="false" />
+          <Property Name="PMS_ID" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="Payment_ID" />
+          </Key>
+          <Property Name="Payment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PayType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="payTime" Type="DateTime" Precision="3" />
+          <Property Name="client_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Guest_ID" Type="Int32" Nullable="false" />
+          <Property Name="visa_chq_no" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="due_date" Type="DateTime" Precision="3" />
+          <Property Name="PMS_ID" Type="Int32" Nullable="false" />
+          <Property Name="Booking_ID" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="Property_ID" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="receipt_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="payment_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="permission">
+          <Key>
+            <PropertyRef Name="permission_id" />
+          </Key>
+          <Property Name="permission_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="PMS_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="plan">
+          <Key>
+            <PropertyRef Name="Plan_ID" />
+          </Key>
+          <Property Name="Plan_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Duration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cost_per_Property" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="no_of_users" Type="Int32" Nullable="false" />
+          <Property Name="PMS_ID" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="property">
+          <Key>
+            <PropertyRef Name="Property_ID" />
+          </Key>
+          <Property Name="Property_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Property_type_id" Type="Int32" Nullable="false" />
+          <Property Name="Property_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="house_keeping_status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fixed_status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status_ID" Type="Int32" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="floor" Type="Int32" />
+        </EntityType>
+        <EntityType Name="property_has_aminities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PropertyType_ID" Type="Int32" />
+          <Property Name="Amenity_ID" Type="Int32" />
+          <Property Name="Property_type_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="is_selected" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="property_types">
+          <Key>
+            <PropertyRef Name="PropertyType_ID" />
+          </Key>
+          <Property Name="PropertyType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Property_type_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="child_no" Type="Int32" Nullable="false" />
+          <Property Name="adults_no" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="no_of_properties" Type="Int32" Nullable="false" />
+          <Property Name="PMS_ID" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="start_number" Type="Int32" Nullable="false" />
+          <Property Name="Name_char" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="type_view" Type="Boolean" Nullable="false" />
+          <Property Name="property_type_icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="region">
+          <Key>
+            <PropertyRef Name="Region_ID" />
+          </Key>
+          <Property Name="Region_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Parent_Region_id" Type="Int32" />
+          <Property Name="PMS_ID" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reply">
+          <Key>
+            <PropertyRef Name="reply_id" />
+          </Key>
+          <Property Name="reply_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="messege_id" Type="Int32" />
+          <Property Name="reply_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="role_permissions">
+          <Key>
+            <PropertyRef Name="permission_id" />
+          </Key>
+          <Property Name="permission_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="role_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="season">
+          <Key>
+            <PropertyRef Name="seasons_id" />
+          </Key>
+          <Property Name="seasons_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="season_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="From_Date" Type="DateTime" Precision="3" />
+          <Property Name="To_Date" Type="DateTime" Precision="3" />
+          <Property Name="PMS_ID" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="seasons_rates">
+          <Key>
+            <PropertyRef Name="trans_id" />
+          </Key>
+          <Property Name="trans_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Property_type_id" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="PMS_ID" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="id_season" Type="Int32" />
+          <Property Name="Property_type_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="original_price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="adults_no" Type="Int32" />
+          <Property Name="child_no" Type="Int32" />
+          <Property Name="season_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="From_Date" Type="DateTime" Precision="3" />
+          <Property Name="To_Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="status_color">
+          <Key>
+            <PropertyRef Name="status_id" />
+          </Key>
+          <Property Name="status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status_color1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status_type_id" Type="Int32" />
+          <Property Name="status_name_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="status_types">
+          <Key>
+            <PropertyRef Name="status_type_id" />
+          </Key>
+          <Property Name="status_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status_type_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="system_options">
+          <Key>
+            <PropertyRef Name="PMS_ID" />
+          </Key>
+          <Property Name="PMS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Default_lang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Default_currency" Type="Int32" />
+          <Property Name="no_of_decimals" Type="Int32" Nullable="false" />
+          <Property Name="check_in_time" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="check_out_time" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="child_max_age" Type="Int32" />
+          <Property Name="infant_max_age" Type="Int32" />
+          <Property Name="Default_travel_agent_commission" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Default_company_Discount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="room_after_check_out" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="room_after_change_room" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cancel_booking_min_fee" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cancel_booking_percent_fee" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cancel_booking_dayes" Type="Int32" />
+          <Property Name="is_credit_card_needed" Type="Boolean" Nullable="false" />
+          <Property Name="si_deposit_needed" Type="Decimal" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="early_checked_in_hours" Type="Int32" />
+          <Property Name="early_check_in_fixed_fee" Type="Int32" />
+          <Property Name="early_check_in_booking_percent" Type="Int32" />
+          <Property Name="early_check_in_night_percent" Type="Int32" />
+          <Property Name="early_check_out_dayes" Type="Int32" />
+          <Property Name="early_check_out_fixed_fee" Type="Int32" />
+          <Property Name="early_check_out_booking_percent" Type="Int32" />
+          <Property Name="early_check_out_night_percent" Type="Int32" />
+          <Property Name="late_check_out_hours" Type="Int32" />
+          <Property Name="late_check_out_fixed_fee" Type="Int32" />
+          <Property Name="late_check_out_booking_percent" Type="Int32" />
+          <Property Name="late_check_out_night_percent" Type="Int32" />
+          <Property Name="PMS_logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="PMS_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country_ID" Type="Int32" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City_ID" Type="Int32" />
+          <Property Name="mob" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Temp_charges">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="charge_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="is_selected" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="role_id" Type="Int32" />
+          <Property Name="PMS_ID" Type="Int32" />
+          <Property Name="gendre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="birth_date" Type="DateTime" Precision="3" />
+          <Property Name="Nationality_ID" Type="Int32" />
+          <Property Name="Identity_ID" Type="Int32" />
+          <Property Name="identity_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country_ID" Type="Int32" />
+          <Property Name="City_ID" Type="Int32" />
+          <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mob" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="start_job_date" Type="DateTime" Precision="3" />
+          <Property Name="confirm_password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="PMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="Self.account" />
+          <EntitySet Name="accounts_payments" EntityType="Self.accounts_payments" />
+          <EntitySet Name="amenities" EntityType="Self.amenity" />
+          <EntitySet Name="bookings" EntityType="Self.booking" />
+          <EntitySet Name="Booking_has_Property" EntityType="Self.Booking_has_Property" />
+          <EntitySet Name="booking_source" EntityType="Self.booking_source" />
+          <EntitySet Name="charges" EntityType="Self.charge" />
+          <EntitySet Name="cities" EntityType="Self.city" />
+          <EntitySet Name="clients" EntityType="Self.client" />
+          <EntitySet Name="clients_type" EntityType="Self.clients_type" />
+          <EntitySet Name="contract_dtl" EntityType="Self.contract_dtl" />
+          <EntitySet Name="contracts_hdr" EntityType="Self.contracts_hdr" />
+          <EntitySet Name="countries" EntityType="Self.country" />
+          <EntitySet Name="currencies" EntityType="Self.currency" />
+          <EntitySet Name="guests" EntityType="Self.guest" />
+          <EntitySet Name="housekeeping_trans" EntityType="Self.housekeeping_trans" />
+          <EntitySet Name="identity_types" EntityType="Self.identity_types" />
+          <EntitySet Name="images" EntityType="Self.image" />
+          <EntitySet Name="invoice_dtl" EntityType="Self.invoice_dtl" />
+          <EntitySet Name="logs" EntityType="Self.log" />
+          <EntitySet Name="Messeges" EntityType="Self.Messege" />
+          <EntitySet Name="nationalities" EntityType="Self.nationality" />
+          <EntitySet Name="offers" EntityType="Self.offer" />
+          <EntitySet Name="Offers_dtl" EntityType="Self.Offers_dtl" />
+          <EntitySet Name="package_charges" EntityType="Self.package_charges" />
+          <EntitySet Name="package_dtl" EntityType="Self.package_dtl" />
+          <EntitySet Name="package_hdr" EntityType="Self.package_hdr" />
+          <EntitySet Name="payment_types" EntityType="Self.payment_types" />
+          <EntitySet Name="payments" EntityType="Self.payment" />
+          <EntitySet Name="permissions" EntityType="Self.permission" />
+          <EntitySet Name="plans" EntityType="Self.plan" />
+          <EntitySet Name="properties" EntityType="Self.property" />
+          <EntitySet Name="property_has_aminities" EntityType="Self.property_has_aminities" />
+          <EntitySet Name="property_types" EntityType="Self.property_types" />
+          <EntitySet Name="regions" EntityType="Self.region" />
+          <EntitySet Name="replies" EntityType="Self.reply" />
+          <EntitySet Name="role_permissions" EntityType="Self.role_permissions" />
+          <EntitySet Name="roles" EntityType="Self.role" />
+          <EntitySet Name="seasons" EntityType="Self.season" />
+          <EntitySet Name="seasons_rates" EntityType="Self.seasons_rates" />
+          <EntitySet Name="status_color" EntityType="Self.status_color" />
+          <EntitySet Name="status_types" EntityType="Self.status_types" />
+          <EntitySet Name="system_options" EntityType="Self.system_options" />
+          <EntitySet Name="Temp_charges" EntityType="Self.Temp_charges" />
+          <EntitySet Name="users" EntityType="Self.user" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PMSModelStoreContainer" CdmEntityContainer="PMSEntities">
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="PMSModel.account">
+              <MappingFragment StoreEntitySet="accounts">
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="PMS_code" ColumnName="PMS_code" />
+                <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="paid" ColumnName="paid" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="no_of_users" ColumnName="no_of_users" />
+                <ScalarProperty Name="PMS_Name" ColumnName="PMS_Name" />
+                <ScalarProperty Name="owner_name" ColumnName="owner_name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="City_id" ColumnName="City_id" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="accounts_payments">
+            <EntityTypeMapping TypeName="PMSModel.accounts_payments">
+              <MappingFragment StoreEntitySet="accounts_payments">
+                <ScalarProperty Name="accounts_payments_id" ColumnName="accounts_payments_id" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="PayType_ID" ColumnName="PayType_ID" />
+                <ScalarProperty Name="payTime" ColumnName="payTime" />
+                <ScalarProperty Name="visa_chq_no" ColumnName="visa_chq_no" />
+                <ScalarProperty Name="due_date" ColumnName="due_date" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="amenities">
+            <EntityTypeMapping TypeName="PMSModel.amenity">
+              <MappingFragment StoreEntitySet="amenities">
+                <ScalarProperty Name="Amenity_ID" ColumnName="Amenity_ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="isselected" ColumnName="isselected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bookings">
+            <EntityTypeMapping TypeName="PMSModel.booking">
+              <MappingFragment StoreEntitySet="booking">
+                <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+                <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+                <ScalarProperty Name="Planned_Arrival_Date" ColumnName="Planned_Arrival_Date" />
+                <ScalarProperty Name="Planned_Departure_Date" ColumnName="Planned_Departure_Date" />
+                <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+                <ScalarProperty Name="Night_price" ColumnName="Night_price" />
+                <ScalarProperty Name="Booking_source" ColumnName="Booking_source" />
+                <ScalarProperty Name="No_of_nights" ColumnName="No_of_nights" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Property_Type_ID" ColumnName="Property_Type_ID" />
+                <ScalarProperty Name="Actual_arrival_Date" ColumnName="Actual_arrival_Date" />
+                <ScalarProperty Name="Actual_Departure_Date" ColumnName="Actual_Departure_Date" />
+                <ScalarProperty Name="Is_Cancelled" ColumnName="Is_Cancelled" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="Pay_Source_Type" ColumnName="Pay_Source_Type" />
+                <ScalarProperty Name="IS_confirmed" ColumnName="IS_confirmed" />
+                <ScalarProperty Name="confirmed_Date" ColumnName="confirmed_Date" />
+                <ScalarProperty Name="Property_Name" ColumnName="Property_Name" />
+                <ScalarProperty Name="Property_type_name" ColumnName="Property_type_name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+                <ScalarProperty Name="child_no" ColumnName="child_no" />
+                <ScalarProperty Name="person_no" ColumnName="person_no" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="change_date" ColumnName="change_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Booking_has_Property">
+            <EntityTypeMapping TypeName="PMSModel.Booking_has_Property">
+              <MappingFragment StoreEntitySet="Booking_has_Property">
+                <ScalarProperty Name="BP_ID" ColumnName="BP_ID" />
+                <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+                <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+                <ScalarProperty Name="Planned_Arrival_Date" ColumnName="Planned_Arrival_Date" />
+                <ScalarProperty Name="Planned_Departure_Date" ColumnName="Planned_Departure_Date" />
+                <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+                <ScalarProperty Name="Night_price" ColumnName="Night_price" />
+                <ScalarProperty Name="Booking_source" ColumnName="Booking_source" />
+                <ScalarProperty Name="No_of_nights" ColumnName="No_of_nights" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Property_Type_ID" ColumnName="Property_Type_ID" />
+                <ScalarProperty Name="Actual_arrival_Date" ColumnName="Actual_arrival_Date" />
+                <ScalarProperty Name="Actual_Departure_Date" ColumnName="Actual_Departure_Date" />
+                <ScalarProperty Name="Is_Cancelled" ColumnName="Is_Cancelled" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="Pay_Source_Type" ColumnName="Pay_Source_Type" />
+                <ScalarProperty Name="IS_confirmed" ColumnName="IS_confirmed" />
+                <ScalarProperty Name="confirmed_Date" ColumnName="confirmed_Date" />
+                <ScalarProperty Name="Property_Name" ColumnName="Property_Name" />
+                <ScalarProperty Name="Property_type_name" ColumnName="Property_type_name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+                <ScalarProperty Name="child_no" ColumnName="child_no" />
+                <ScalarProperty Name="person_no" ColumnName="person_no" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="change_date" ColumnName="change_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="booking_source">
+            <EntityTypeMapping TypeName="PMSModel.booking_source">
+              <MappingFragment StoreEntitySet="booking_source">
+                <ScalarProperty Name="Booking_Source_IDBooking_Source_ID" ColumnName="Booking_Source_IDBooking_Source_ID" />
+                <ScalarProperty Name="Booking_Source_Name" ColumnName="Booking_Source_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="charges">
+            <EntityTypeMapping TypeName="PMSModel.charge">
+              <MappingFragment StoreEntitySet="charges">
+                <ScalarProperty Name="charge_id" ColumnName="charge_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="is_selected" ColumnName="is_selected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cities">
+            <EntityTypeMapping TypeName="PMSModel.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="City_id" ColumnName="City_id" />
+                <ScalarProperty Name="City_name" ColumnName="City_name" />
+                <ScalarProperty Name="Country_id" ColumnName="Country_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clients">
+            <EntityTypeMapping TypeName="PMSModel.client">
+              <MappingFragment StoreEntitySet="clients">
+                <ScalarProperty Name="client_ID" ColumnName="client_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Commission_discount" ColumnName="Commission_discount" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="Clients_type_id" ColumnName="Clients_type_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+                <ScalarProperty Name="City_ID" ColumnName="City_ID" />
+                <ScalarProperty Name="contact_person_name" ColumnName="contact_person_name" />
+                <ScalarProperty Name="person_email" ColumnName="person_email" />
+                <ScalarProperty Name="person_phone" ColumnName="person_phone" />
+                <ScalarProperty Name="person_mob" ColumnName="person_mob" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clients_type">
+            <EntityTypeMapping TypeName="PMSModel.clients_type">
+              <MappingFragment StoreEntitySet="clients_type">
+                <ScalarProperty Name="Clients_type_id" ColumnName="Clients_type_id" />
+                <ScalarProperty Name="Clients_type_name" ColumnName="Clients_type_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contract_dtl">
+            <EntityTypeMapping TypeName="PMSModel.contract_dtl">
+              <MappingFragment StoreEntitySet="contract_dtl">
+                <ScalarProperty Name="condition_id" ColumnName="condition_id" />
+                <ScalarProperty Name="contract_id" ColumnName="contract_id" />
+                <ScalarProperty Name="condition_name" ColumnName="condition_name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contracts_hdr">
+            <EntityTypeMapping TypeName="PMSModel.contracts_hdr">
+              <MappingFragment StoreEntitySet="contracts_hdr">
+                <ScalarProperty Name="Contract_ID" ColumnName="Contract_ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="countries">
+            <EntityTypeMapping TypeName="PMSModel.country">
+              <MappingFragment StoreEntitySet="country">
+                <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+                <ScalarProperty Name="Country_name" ColumnName="Country_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="currencies">
+            <EntityTypeMapping TypeName="PMSModel.currency">
+              <MappingFragment StoreEntitySet="currencies">
+                <ScalarProperty Name="Currency_ID" ColumnName="Currency_ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="mark" ColumnName="mark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="guests">
+            <EntityTypeMapping TypeName="PMSModel.guest">
+              <MappingFragment StoreEntitySet="guests">
+                <ScalarProperty Name="Guest_ID" ColumnName="Guest_ID" />
+                <ScalarProperty Name="Guest_Name" ColumnName="Guest_Name" />
+                <ScalarProperty Name="Guest_email" ColumnName="Guest_email" />
+                <ScalarProperty Name="Nationality_ID" ColumnName="Nationality_ID" />
+                <ScalarProperty Name="Identity_ID" ColumnName="Identity_ID" />
+                <ScalarProperty Name="Is_Black_listed" ColumnName="Is_Black_listed" />
+                <ScalarProperty Name="Is_Vip" ColumnName="Is_Vip" />
+                <ScalarProperty Name="identity_type" ColumnName="identity_type" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="Birth_Date" ColumnName="Birth_Date" />
+                <ScalarProperty Name="gendre" ColumnName="gendre" />
+                <ScalarProperty Name="nickname" ColumnName="nickname" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="Booking_id" ColumnName="Booking_id" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+                <ScalarProperty Name="City_ID" ColumnName="City_ID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mobil" ColumnName="Mobil" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+                <ScalarProperty Name="Company_address" ColumnName="Company_address" />
+                <ScalarProperty Name="Company_country" ColumnName="Company_country" />
+                <ScalarProperty Name="Company_city" ColumnName="Company_city" />
+                <ScalarProperty Name="Company_Mobil" ColumnName="Company_Mobil" />
+                <ScalarProperty Name="Company_phone" ColumnName="Company_phone" />
+                <ScalarProperty Name="guest_type" ColumnName="guest_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="housekeeping_trans">
+            <EntityTypeMapping TypeName="PMSModel.housekeeping_trans">
+              <MappingFragment StoreEntitySet="housekeeping_trans">
+                <ScalarProperty Name="Trans_ID" ColumnName="Trans_ID" />
+                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+                <ScalarProperty Name="Task" ColumnName="Task" />
+                <ScalarProperty Name="Assign_to" ColumnName="Assign_to" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="Property_Name" ColumnName="Property_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="identity_types">
+            <EntityTypeMapping TypeName="PMSModel.identity_types">
+              <MappingFragment StoreEntitySet="identity_types">
+                <ScalarProperty Name="identity_ID" ColumnName="identity_ID" />
+                <ScalarProperty Name="Parent_identity_id" ColumnName="Parent_identity_id" />
+                <ScalarProperty Name="identity_name" ColumnName="identity_name" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="images">
+            <EntityTypeMapping TypeName="PMSModel.image">
+              <MappingFragment StoreEntitySet="images">
+                <ScalarProperty Name="image_id" ColumnName="image_id" />
+                <ScalarProperty Name="PropertyType_ID" ColumnName="PropertyType_ID" />
+                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+                <ScalarProperty Name="image1" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invoice_dtl">
+            <EntityTypeMapping TypeName="PMSModel.invoice_dtl">
+              <MappingFragment StoreEntitySet="invoice_dtl">
+                <ScalarProperty Name="invoice_no" ColumnName="invoice_no" />
+                <ScalarProperty Name="Invoice_dtl_id" ColumnName="Invoice_dtl_id" />
+                <ScalarProperty Name="charge_id" ColumnName="charge_id" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="discount_percent" ColumnName="discount_percent" />
+                <ScalarProperty Name="discount_value" ColumnName="discount_value" />
+                <ScalarProperty Name="Charge_Date" ColumnName="Charge_Date" />
+                <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+                <ScalarProperty Name="Guest_ID" ColumnName="Guest_ID" />
+                <ScalarProperty Name="Agent_ID" ColumnName="Agent_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="PMS_Name" ColumnName="PMS_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="logs">
+            <EntityTypeMapping TypeName="PMSModel.log">
+              <MappingFragment StoreEntitySet="logs">
+                <ScalarProperty Name="log_id" ColumnName="log_id" />
+                <ScalarProperty Name="real_date" ColumnName="real_date" />
+                <ScalarProperty Name="action_cat" ColumnName="action_cat" />
+                <ScalarProperty Name="action" ColumnName="action" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="item_name" ColumnName="item_name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="PMS_Name" ColumnName="PMS_Name" />
+                <ScalarProperty Name="Bookibng_ID" ColumnName="Bookibng_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messeges">
+            <EntityTypeMapping TypeName="PMSModel.Messege">
+              <MappingFragment StoreEntitySet="Messege">
+                <ScalarProperty Name="messege_id" ColumnName="messege_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="messege_title" ColumnName="messege_title" />
+                <ScalarProperty Name="messege_body" ColumnName="messege_body" />
+                <ScalarProperty Name="messege_date" ColumnName="messege_date" />
+                <ScalarProperty Name="flag_read" ColumnName="flag_read" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nationalities">
+            <EntityTypeMapping TypeName="PMSModel.nationality">
+              <MappingFragment StoreEntitySet="nationalities">
+                <ScalarProperty Name="Nationality_ID" ColumnName="Nationality_ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="offers">
+            <EntityTypeMapping TypeName="PMSModel.offer">
+              <MappingFragment StoreEntitySet="offers">
+                <ScalarProperty Name="Offer_id" ColumnName="Offer_id" />
+                <ScalarProperty Name="From_Date" ColumnName="From_Date" />
+                <ScalarProperty Name="To_Date" ColumnName="To_Date" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="offer_name" ColumnName="offer_name" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offers_dtl">
+            <EntityTypeMapping TypeName="PMSModel.Offers_dtl">
+              <MappingFragment StoreEntitySet="Offers_dtl">
+                <ScalarProperty Name="trans_ID" ColumnName="trans_ID" />
+                <ScalarProperty Name="original_price" ColumnName="original_price" />
+                <ScalarProperty Name="offer_price" ColumnName="offer_price" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="Property_type_id" ColumnName="Property_type_id" />
+                <ScalarProperty Name="Property_type_name" ColumnName="Property_type_name" />
+                <ScalarProperty Name="adults_no" ColumnName="adults_no" />
+                <ScalarProperty Name="child_no" ColumnName="child_no" />
+                <ScalarProperty Name="offer_name" ColumnName="offer_name" />
+                <ScalarProperty Name="offer_id" ColumnName="offer_id" />
+                <ScalarProperty Name="From_Date" ColumnName="From_Date" />
+                <ScalarProperty Name="To_Date" ColumnName="To_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="package_charges">
+            <EntityTypeMapping TypeName="PMSModel.package_charges">
+              <MappingFragment StoreEntitySet="package_charges">
+                <ScalarProperty Name="trans_id" ColumnName="trans_id" />
+                <ScalarProperty Name="Charge_ID" ColumnName="Charge_ID" />
+                <ScalarProperty Name="Charge_Price" ColumnName="Charge_Price" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="offer_id" ColumnName="offer_id" />
+                <ScalarProperty Name="offer_name" ColumnName="offer_name" />
+                <ScalarProperty Name="is_selected" ColumnName="is_selected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="package_dtl">
+            <EntityTypeMapping TypeName="PMSModel.package_dtl">
+              <MappingFragment StoreEntitySet="package_dtl">
+                <ScalarProperty Name="trans_ID" ColumnName="trans_ID" />
+                <ScalarProperty Name="original_price" ColumnName="original_price" />
+                <ScalarProperty Name="Package_price" ColumnName="Package_price" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="Property_type_id" ColumnName="Property_type_id" />
+                <ScalarProperty Name="Property_type_name" ColumnName="Property_type_name" />
+                <ScalarProperty Name="adults_no" ColumnName="adults_no" />
+                <ScalarProperty Name="child_no" ColumnName="child_no" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="No_of_Days" ColumnName="No_of_Days" />
+                <ScalarProperty Name="id_pack" ColumnName="id_pack" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="package_hdr">
+            <EntityTypeMapping TypeName="PMSModel.package_hdr">
+              <MappingFragment StoreEntitySet="package_hdr">
+                <ScalarProperty Name="Package_Id" ColumnName="Package_Id" />
+                <ScalarProperty Name="No_of_Days" ColumnName="No_of_Days" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payment_types">
+            <EntityTypeMapping TypeName="PMSModel.payment_types">
+              <MappingFragment StoreEntitySet="payment_types">
+                <ScalarProperty Name="PayType_ID" ColumnName="PayType_ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Is_active" ColumnName="Is_active" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payments">
+            <EntityTypeMapping TypeName="PMSModel.payment">
+              <MappingFragment StoreEntitySet="payments">
+                <ScalarProperty Name="Payment_ID" ColumnName="Payment_ID" />
+                <ScalarProperty Name="PayType" ColumnName="PayType" />
+                <ScalarProperty Name="payTime" ColumnName="payTime" />
+                <ScalarProperty Name="client_type" ColumnName="client_type" />
+                <ScalarProperty Name="Guest_ID" ColumnName="Guest_ID" />
+                <ScalarProperty Name="visa_chq_no" ColumnName="visa_chq_no" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="due_date" ColumnName="due_date" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="receipt_type" ColumnName="receipt_type" />
+                <ScalarProperty Name="payment_type" ColumnName="payment_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="permissions">
+            <EntityTypeMapping TypeName="PMSModel.permission">
+              <MappingFragment StoreEntitySet="permissions">
+                <ScalarProperty Name="permission_id" ColumnName="permission_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="PMS_Id" ColumnName="PMS_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="plans">
+            <EntityTypeMapping TypeName="PMSModel.plan">
+              <MappingFragment StoreEntitySet="plans">
+                <ScalarProperty Name="Plan_ID" ColumnName="Plan_ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="cost_per_Property" ColumnName="cost_per_Property" />
+                <ScalarProperty Name="no_of_users" ColumnName="no_of_users" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="properties">
+            <EntityTypeMapping TypeName="PMSModel.property">
+              <MappingFragment StoreEntitySet="properties">
+                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+                <ScalarProperty Name="Property_type_id" ColumnName="Property_type_id" />
+                <ScalarProperty Name="Property_Name" ColumnName="Property_Name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="house_keeping_status" ColumnName="house_keeping_status" />
+                <ScalarProperty Name="fixed_status" ColumnName="fixed_status" />
+                <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="floor" ColumnName="floor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="property_has_aminities">
+            <EntityTypeMapping TypeName="PMSModel.property_has_aminities">
+              <MappingFragment StoreEntitySet="property_has_aminities">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PropertyType_ID" ColumnName="PropertyType_ID" />
+                <ScalarProperty Name="Amenity_ID" ColumnName="Amenity_ID" />
+                <ScalarProperty Name="Property_type_name" ColumnName="Property_type_name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="is_selected" ColumnName="is_selected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="property_types">
+            <EntityTypeMapping TypeName="PMSModel.property_types">
+              <MappingFragment StoreEntitySet="property_types">
+                <ScalarProperty Name="PropertyType_ID" ColumnName="PropertyType_ID" />
+                <ScalarProperty Name="Property_type_name" ColumnName="Property_type_name" />
+                <ScalarProperty Name="child_no" ColumnName="child_no" />
+                <ScalarProperty Name="adults_no" ColumnName="adults_no" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="no_of_properties" ColumnName="no_of_properties" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="start_number" ColumnName="start_number" />
+                <ScalarProperty Name="Name_char" ColumnName="Name_char" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="type_view" ColumnName="type_view" />
+                <ScalarProperty Name="property_type_icon" ColumnName="property_type_icon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="regions">
+            <EntityTypeMapping TypeName="PMSModel.region">
+              <MappingFragment StoreEntitySet="regions">
+                <ScalarProperty Name="Region_ID" ColumnName="Region_ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Parent_Region_id" ColumnName="Parent_Region_id" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="replies">
+            <EntityTypeMapping TypeName="PMSModel.reply">
+              <MappingFragment StoreEntitySet="reply">
+                <ScalarProperty Name="reply_id" ColumnName="reply_id" />
+                <ScalarProperty Name="messege_id" ColumnName="messege_id" />
+                <ScalarProperty Name="reply_text" ColumnName="reply_text" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role_permissions">
+            <EntityTypeMapping TypeName="PMSModel.role_permissions">
+              <MappingFragment StoreEntitySet="role_permissions">
+                <ScalarProperty Name="permission_id" ColumnName="permission_id" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="PMSModel.role">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seasons">
+            <EntityTypeMapping TypeName="PMSModel.season">
+              <MappingFragment StoreEntitySet="seasons">
+                <ScalarProperty Name="seasons_id" ColumnName="seasons_id" />
+                <ScalarProperty Name="season_name" ColumnName="season_name" />
+                <ScalarProperty Name="From_Date" ColumnName="From_Date" />
+                <ScalarProperty Name="To_Date" ColumnName="To_Date" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seasons_rates">
+            <EntityTypeMapping TypeName="PMSModel.seasons_rates">
+              <MappingFragment StoreEntitySet="seasons_rates">
+                <ScalarProperty Name="trans_id" ColumnName="trans_id" />
+                <ScalarProperty Name="Property_type_id" ColumnName="Property_type_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="id_season" ColumnName="id_season" />
+                <ScalarProperty Name="Property_type_name" ColumnName="Property_type_name" />
+                <ScalarProperty Name="original_price" ColumnName="original_price" />
+                <ScalarProperty Name="adults_no" ColumnName="adults_no" />
+                <ScalarProperty Name="child_no" ColumnName="child_no" />
+                <ScalarProperty Name="season_name" ColumnName="season_name" />
+                <ScalarProperty Name="From_Date" ColumnName="From_Date" />
+                <ScalarProperty Name="To_Date" ColumnName="To_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status_color">
+            <EntityTypeMapping TypeName="PMSModel.status_color">
+              <MappingFragment StoreEntitySet="status_color">
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="status_name" ColumnName="status_name" />
+                <ScalarProperty Name="status_color1" ColumnName="status_color" />
+                <ScalarProperty Name="status_type_id" ColumnName="status_type_id" />
+                <ScalarProperty Name="status_name_en" ColumnName="status_name_en" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status_types">
+            <EntityTypeMapping TypeName="PMSModel.status_types">
+              <MappingFragment StoreEntitySet="status_types">
+                <ScalarProperty Name="status_type_id" ColumnName="status_type_id" />
+                <ScalarProperty Name="status_type_name" ColumnName="status_type_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="system_options">
+            <EntityTypeMapping TypeName="PMSModel.system_options">
+              <MappingFragment StoreEntitySet="system_options">
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="Default_lang" ColumnName="Default_lang" />
+                <ScalarProperty Name="Default_currency" ColumnName="Default_currency" />
+                <ScalarProperty Name="no_of_decimals" ColumnName="no_of_decimals" />
+                <ScalarProperty Name="check_in_time" ColumnName="check_in_time" />
+                <ScalarProperty Name="check_out_time" ColumnName="check_out_time" />
+                <ScalarProperty Name="child_max_age" ColumnName="child_max_age" />
+                <ScalarProperty Name="infant_max_age" ColumnName="infant_max_age" />
+                <ScalarProperty Name="Default_travel_agent_commission" ColumnName="Default_travel_agent_commission" />
+                <ScalarProperty Name="Default_company_Discount" ColumnName="Default_company_Discount" />
+                <ScalarProperty Name="room_after_check_out" ColumnName="room_after_check_out" />
+                <ScalarProperty Name="room_after_change_room" ColumnName="room_after_change_room" />
+                <ScalarProperty Name="cancel_booking_min_fee" ColumnName="cancel_booking_min_fee" />
+                <ScalarProperty Name="cancel_booking_percent_fee" ColumnName="cancel_booking_percent_fee" />
+                <ScalarProperty Name="cancel_booking_dayes" ColumnName="cancel_booking_dayes" />
+                <ScalarProperty Name="is_credit_card_needed" ColumnName="is_credit_card_needed" />
+                <ScalarProperty Name="si_deposit_needed" ColumnName="si_deposit_needed" />
+                <ScalarProperty Name="early_checked_in_hours" ColumnName="early_checked_in_hours" />
+                <ScalarProperty Name="early_check_in_fixed_fee" ColumnName="early_check_in_fixed_fee" />
+                <ScalarProperty Name="early_check_in_booking_percent" ColumnName="early_check_in_booking_percent" />
+                <ScalarProperty Name="early_check_in_night_percent" ColumnName="early_check_in_night_percent" />
+                <ScalarProperty Name="early_check_out_dayes" ColumnName="early_check_out_dayes" />
+                <ScalarProperty Name="early_check_out_fixed_fee" ColumnName="early_check_out_fixed_fee" />
+                <ScalarProperty Name="early_check_out_booking_percent" ColumnName="early_check_out_booking_percent" />
+                <ScalarProperty Name="early_check_out_night_percent" ColumnName="early_check_out_night_percent" />
+                <ScalarProperty Name="late_check_out_hours" ColumnName="late_check_out_hours" />
+                <ScalarProperty Name="late_check_out_fixed_fee" ColumnName="late_check_out_fixed_fee" />
+                <ScalarProperty Name="late_check_out_booking_percent" ColumnName="late_check_out_booking_percent" />
+                <ScalarProperty Name="late_check_out_night_percent" ColumnName="late_check_out_night_percent" />
+                <ScalarProperty Name="PMS_logo" ColumnName="PMS_logo" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="PMS_Name" ColumnName="PMS_Name" />
+                <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="City_ID" ColumnName="City_ID" />
+                <ScalarProperty Name="mob" ColumnName="mob" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Temp_charges">
+            <EntityTypeMapping TypeName="PMSModel.Temp_charges">
+              <MappingFragment StoreEntitySet="Temp_charges">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="charge_id" ColumnName="charge_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="is_selected" ColumnName="is_selected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="PMSModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="PMS_ID" ColumnName="PMS_ID" />
+                <ScalarProperty Name="gendre" ColumnName="gendre" />
+                <ScalarProperty Name="birth_date" ColumnName="birth_date" />
+                <ScalarProperty Name="Nationality_ID" ColumnName="Nationality_ID" />
+                <ScalarProperty Name="Identity_ID" ColumnName="Identity_ID" />
+                <ScalarProperty Name="identity_type" ColumnName="identity_type" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+                <ScalarProperty Name="City_ID" ColumnName="City_ID" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mob" ColumnName="mob" />
+                <ScalarProperty Name="start_job_date" ColumnName="start_job_date" />
+                <ScalarProperty Name="confirm_password" ColumnName="confirm_password" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="vcode" ColumnName="vcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
